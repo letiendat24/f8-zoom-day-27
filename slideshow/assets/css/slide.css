@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.slideshow {
+    position: relative;
+    height: 250px;
+    display: flex;
+    overflow: hidden;
+}
+
+.slideshow .inner {
+    display: flex;
+    height: 100%;
+    transition: all ease 0.5s;
+}
+
+.slideshow .slide-item {
+
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.slide-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.slideshow .pre-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.pre-btn.prev {
+    left: 10px;
+    user-select: none;
+}
+
+.pre-btn.next {
+    right: 10px;
+    user-select: none;
+}
+
+.dots {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 2;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff7;
+    transition: opacity .3s;
+}
+
+.dot.active {
+    background: #fff;
+    opacity: 1;
+}

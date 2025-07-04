@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fcefee;
+    overflow: hidden;
+}
+
+.tinder-container {
+    position: relative;
+    width: 320px;
+    height: 520px;
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .2);
+    display: flex;
+    flex-direction: column;
+    touch-action: none;
+    /* transition: transform .35s ease, opacity .35s ease; */
+}
+
+.card img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    user-select: none;
+}
+
+.info {
+    padding: 18px;
+    text-align: center;
+    user-select: none;
+}
+
+.info h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.info p {
+    font-size: 16px;
+    color: #777;
+}
+
+.buttons {
+    margin-top: 24px;
+    display: flex;
+    gap: 40px;
+}
+
+.buttons button {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    font-size: 26px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    transition: transform .15s;
+}
+
+.like-btn {
+    background: #fff;
+    color: #27ae60;
+}
+
+.nope-btn {
+    background: #fff;
+    color: #e74c3c;
+}
+
+.buttons button:active {
+    transform: scale(.9);
+}
+
+.decision {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    font-size: 48px;
+    font-weight: 900;
+    border: 6px solid;
+    border-radius: 12px;
+    padding: 4px 12px;
+    opacity: 0;
+    transform: rotate(-20deg)
+}
+
+.like {
+    color: #27ae60;
+    border-color: #27ae60
+}
+
+.nope {
+    color: #e74c3c;
+    border-color: #e74c3c;
+    left: auto;
+    right: 32px;
+    transform: rotate(20deg)
+}
