@@ -28,10 +28,15 @@ textarea {
 
 .contextmenu {
     position: absolute;
+    visibility: hidden;
     background-color: black;
     min-width: 100px;
     color: #ccc;
     z-index: 999;
+}
+
+.contextmenu.show {
+    visibility: visible;
 }
 
 .contextmenu li {

@@ -7,7 +7,11 @@ const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 let currentIndex = 1;
 
-
+document.addEventListener("slideshow:change", (e) => {
+  console.log(e.detail);
+});
+let currentSlide = null;
+let oldSlide = null;
 // create dots under slides
 for (let i = 0; i < SLIDE_LENGTH; i++) {
     const dot = document.createElement("span");
@@ -41,8 +45,9 @@ function updatePosition(instant = false) {
     slideshowInner.style.transition = instant ? 'none' : 'transform .5s ease';
     slideshowInner.style.transform = `translateX(-${currentIndex * 100}%)`;
     updateDots();
+    oldSlide = slideItems[(currentIndex - 1 + SLIDE_LENGTH) % SLIDE_LENGTH]
+    currentSlide = slideItems[currentIndex];
 }
-
 updatePosition(true);
 startAutoPlay();
 nextBtn.onclick = () => {
@@ -68,6 +73,15 @@ slideshowInner.addEventListener('transitionend', () => {
         currentIndex = slides.length - 2;
         updatePosition(true);
     }
+    if (currentSlide && oldSlide) {
+        document.dispatchEvent(new CustomEvent("slideshow:change", {
+            detail: {
+                oldSlide: oldSlide,
+                currentSlide: currentSlide 
+        }
+        }))
+    }
+    
 });
 
 dots.forEach(function(dot, index) {

@@ -18,26 +18,27 @@ document.oncontextmenu = (e) => {
     const menuW = contextMenu.offsetWidth;
     const menuH = contextMenu.offsetHeight;
     const winW  = window.innerWidth;
-     const winH  = window.innerHeight;
+    const winH  = window.innerHeight;
+    const safeX =  Math.min(Math.max(0,e.clientX), winW - menuW - 10);
+    const safeY = Math.min(Math.max(0, e.clientY), winH - menuH - 10);
     e.preventDefault();
     contextMenu.hidden = false;
     Object.assign(contextMenu.style,  {
-        top: e.clientY + "px",
-        left: e.clientX + "px",
-    })
-
-}
-display.contentDocument.oncontextmenu = (e) => {
-    e.preventDefault();
-    contextMenu.hidden = false;
-    Object.assign(contextMenu.style,  {
-        top: e.clientY + "px",
-        left: e.clientX + "px",
+        top: safeY + "px",
+        left: safeX + "px",
     })
 }
+// display.contentDocument.oncontextmenu = (e) => {
+//     e.preventDefault();
+//     contextMenu.hidden = false;
+//     Object.assign(contextMenu.style,  {
+//         top: e.clientY + "px",
+//         left: e.clientX + "px",
+//     })
+// }
 document.addEventListener('mousedown', (e) => {
   if (!contextMenu.contains(e.target)) {
-    contextMenu.hidden = true;
+    contextMenu.classList.add("show");
   }
 });
 
